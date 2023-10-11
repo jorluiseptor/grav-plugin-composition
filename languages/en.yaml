@@ -1,0 +1,29 @@
+PLUGIN_NEWS:
+  CONF:
+    NEWS_PAGE_SLUG: News overview page
+    NEWS_PER_PAGE: Posts per page
+    DELTA: Pagination Delta
+    DELTA_HELP: 'How many pages to show left and right of the current page. 0 means all.'
+
+  NEWS: News
+  PLUGIN_DESC: Flex Object based blogging
+  CREATE_NEWS: Create news
+
+  SLUG: Slug (URL)
+  TITLE: Title
+  MEDIA: Media Files
+  EXCERPT: Excerpt
+  META: Meta data
+  HERO: Cover image
+
+  NO_ENTRIES: There are currently no posts published.
+
+  CONTINUE_READING: Read on
+  # CONTINUE_READING: Continue reading
+
+  NEWER: Newer
+  OLDER: Older
+
+  POST_NAV: Post Navigation
+  NEXT_POST: Next Post
+  PREV_POST: Previous Post

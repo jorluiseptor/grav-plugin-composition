@@ -1,0 +1,227 @@
+title: PLUGIN_NEWS.NEWS
+description: PLUGIN_NEWS.PLUGIN_DESC
+type: flex-objects
+
+# Flex Configuration
+config:
+  # Administration Configuration
+  admin:
+    # Admin router (optional)
+    router:
+      path: '/news'
+
+    # Admin menu (optional)
+    menu:
+      list:
+        route: '/news'
+        title: PLUGIN_NEWS.NEWS
+        icon: fa-newspaper-o
+        # Authorization to collection admin
+        authorize: ['admin.pages.list', 'admin.super']
+        # Priority -10 .. 10 (highest goes up)
+        priority: 2
+
+    # Admin template type / folder
+    template: default
+
+    # Permissions
+    permissions:
+      # Primary permissions
+      admin.news:
+        type: crudpl
+        label: PLUGIN_NEWS.NEWS
+
+    # List view
+    list:
+      title: title
+      fields:
+        published:
+          field:
+            type: toggle
+            label: ''
+          width: 5
+        date:
+          width: 15
+        title:
+          link: edit
+        slug:
+          width: 10
+        publish_date:
+          width: 5
+          field:
+            label: pub
+      options:
+        per_page: 50
+        order:
+          by: date
+          dir: desc
+
+    # Edit View
+    edit:
+      title:
+        template: '{{ object.title ?? ''PLUGIN_NEWS.CREATE_NEWS''|tu }}'
+
+    # Preview View
+    preview:
+      enabled: false
+      route:
+      #template: '/plugins/flex-objects/directory:contacts'
+
+    # Data Export
+    export:
+      enabled: true
+      method: 'jsonSerialize'
+      formatter:
+        class: 'Grav\Framework\File\Formatter\YamlFormatter'
+      filename: 'news'
+
+  # Site Configuration
+  site:
+    templates:
+      collection:
+        # Lookup for the template layout files for collections of objects
+        paths:
+          - 'flex/{TYPE}/collection/{LAYOUT}{EXT}'
+      object:
+        # Lookup for the template layout files for objects
+        paths:
+          - 'flex/{TYPE}/object/{LAYOUT}{EXT}'
+      defaults:
+        # Default template {TYPE}; overridden by filename of this blueprint if template folder exists
+        type: 'news'
+        # Default template {LAYOUT}; can be overridden in render calls (usually Twig in templates)
+        layout: default
+
+  # Data Configuration
+  data:
+    # Object class to be used, allowing custom methods for the object
+    object: 'Grav\Plugin\News\Flex\Types\News\NewsObject'
+    # Collection class to be used, allowing custom methods for the collections
+    collection: 'Grav\Plugin\News\Flex\Types\News\NewsCollection'
+    # Index class to be used, works as a quick database-like lookup index
+    index: 'Grav\Common\Flex\Types\Generic\GenericIndex'
+    storage:
+      # Storage class, use single file storage (does not support images and assets)
+      class: 'Grav\Framework\Flex\Storage\FolderStorage'
+      options:
+        formatter:
+          # File formatter class, in this case the file is stored in markdown
+          class: 'Grav\Framework\File\Formatter\JsonFormatter'
+        # JSON file where all the objects will be stored
+        folder: user-data://flex-objects/news
+    search:
+      # Search options
+      options:
+        contains: 1
+      # Fields to be searched
+      fields:
+        - title
+        - slug
+        - content
+    ordering:
+      date: DESC
+
+form:
+  validation: loose
+  fields:
+    title:
+      type: text
+      label: PLUGIN_NEWS.TITLE
+      autofocus: true
+      style: vertical
+      validate:
+        required: true
+
+    content:
+      type: markdown
+      validate:
+        type: textarea
+        required: true
+
+    files:
+      type: file
+      label: PLUGIN_NEWS.MEDIA
+      multiple: true
+      style: vertical
+      # accept:
+      # - image/*
+      # - video/*
+      # - application/pdf
+      # - application/zip
+      # - application/msword
+      # - application/vnd.ms-excel
+      # - application/vnd.oasis.opendocument*
+      # - application/vnd.openxmlformats-officedocument*
+
+    excerpt:
+      type: textarea
+      label: PLUGIN_NEWS.EXCERPT
+      rows: 3
+      style: vertical
+      validate:
+        type: textarea
+
+
+    meta:
+      type: section
+      title: PLUGIN_NEWS.META
+      underline: true
+      fields:
+
+        meta.columns:
+          type: columns
+          fields:
+            col1:
+              type: column
+              fields:
+                published:
+                  type: toggle
+                  label: PLUGIN_ADMIN.PUBLISHED
+                  highlight: 1
+                  size: medium
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
+                    required: true
+
+                date:
+                  type: datetime
+                  label: PLUGIN_ADMIN.DATE
+                  help: PLUGIN_ADMIN.DATE_HELP
+                  format: Y-m-d G:i
+
+                publish_date:
+                  type: datetime
+                  label: PLUGIN_ADMIN.PUBLISHED_DATE
+                  toggleable: true
+                  help: PLUGIN_ADMIN.PUBLISHED_DATE_HELP
+                  format: Y-m-d G:i
+
+                unpublish_date:
+                  type: datetime
+                  label: PLUGIN_ADMIN.UNPUBLISHED_DATE
+                  toggleable: true
+                  help: PLUGIN_ADMIN.UNPUBLISHED_DATE_HELP
+                  format: Y-m-d G:i
+
+            col2:
+              type: column
+              fields:
+                slug:
+                  type: text
+                  label: PLUGIN_NEWS.SLUG
+                  style: vertical
+                  autocomplete: off
+                  validate:
+                    pattern: '[A-Za-z0-9-]+'
+                    # required: true
+                hero:
+                  type: pagemediaselect
+                  label: PLUGIN_NEWS.HERO
+                  # folder: 'page://_heros'
+                  preview_images: true
+                  accept:
+                    - .jpg
+                    - .jpeg

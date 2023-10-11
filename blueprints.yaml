@@ -1,0 +1,59 @@
+name: News
+slug: news
+type: plugin
+version: 0.1.0
+description: Flex Object based blogging
+icon: newspaper-o
+author:
+  name: Sebastian Laube
+  email: hello@sebastianlaube.de
+homepage: https://github.com/bitstarr/grav-plugin-news
+# demo: http://demo.yoursite.com
+keywords: grav, plugin, news, flex-objects, blog
+bugs: https://github.com/bitstarr/grav-plugin-news/issues
+docs: https://github.com/bitstarr/grav-plugin-news/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    news_page:
+      # type: text
+      type: pages
+      # start_route: /
+      show_modular: false
+      limit_levels: 2
+      label: PLUGIN_NEWS.CONF.NEWS_PAGE_SLUG
+      validate:
+        required: true
+        # type: array
+        # type: slug
+
+    news_per_page:
+      type: number
+      label: PLUGIN_NEWS.CONF.NEWS_PER_PAGE
+      validate:
+        required: true
+        type: number
+
+    pagination_delta:
+      type: number
+      label: PLUGIN_NEWS.CONF.DELTA
+      help: PLUGIN_NEWS.CONF.DELTA_HELP
+      validate:
+        required: true
+        type: number

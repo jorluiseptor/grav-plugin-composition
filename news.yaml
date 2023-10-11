@@ -1,0 +1,4 @@
+enabled: true
+news_page: /news
+news_per_page: 20
+pagination_delta: 2

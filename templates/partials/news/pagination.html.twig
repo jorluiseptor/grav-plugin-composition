@@ -1,0 +1,54 @@
+{% set pagination = news_pagination( collection ) %}
+{% if pagination.stack|length > 1 %}
+    {% set pager_classes = [
+        'pager',
+    ] %}
+
+    {% if pagination.newerUrl == false %}
+        {% set pager_classes = pager_classes|merge( ['is-first'] ) %}
+    {% endif %}
+    {% if pagination.olderUrl == false %}
+        {% set pager_classes = pager_classes|merge( ['is-last'] ) %}
+    {% endif %}
+
+<ul class="{{ pager_classes|join( ' ' )|trim }}">
+
+    {% if pagination.newerUrl %}
+        <li class="pager__item pager__item--prev">
+            <a class="pager__link" rel="prev" href="{{ pagination.newerUrl }}">
+                <span class="hex">
+                    {{ svg('arrow-left')|raw }}
+                </span>
+                {{ 'PLUGIN_NEWS.NEWER'|t|e }}
+            </a>
+        </li>
+    {% endif %}
+
+    {% for paginate in pagination.stack %}
+        {% if paginate.isCurrent %}
+            <li class="pager__item pager__item--current">
+                <span class="pager__text active">{{ paginate.number }}</span>
+            </li>
+        {% elseif paginate.isInDelta %}
+            <li class="pager__item pager__item--num">
+                <a class="pager__link" href="{{ paginate.url }}">{{ paginate.number }}</a>
+            </li>
+        {% elseif paginate.isDeltaBorder %}
+            <li class="pager__item pager__item--gap">
+                <span class="pager__text" >&hellip;</span>
+            </li>
+        {% endif %}
+    {% endfor %}
+
+    {% if pagination.olderUrl %}
+        <li class="pager__item pager__item--next">
+            <a class="pager__link" rel="next" href="{{ pagination.olderUrl }}">
+                {{ 'PLUGIN_NEWS.OLDER'|t|e }}
+                <span class="hex">
+                    {{ svg('arrow-right')|raw }}
+                </span>
+            </a>
+        </li>
+    {% endif %}
+</ul>
+{% endif %}
