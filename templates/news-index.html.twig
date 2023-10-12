@@ -1,5 +1,7 @@
 {% extends 'partials/base.html.twig' %}
-{% do assets.addCss('theme://dist/css/news.css', 99) %}
+{% if config.plugins.news.built_in_css %}
+    {% do assets.addCss('plugin://news/assets/css/news.css', 99) %}
+{% endif %}
 
 {% set flex = grav.get('flex') %}
 {% set directory = flex.directory('news') %}
@@ -20,18 +22,24 @@
 {% endif %}
 
 {% set count = collection|length %}
+{# this is important: collection represents all posts, slice only the current page #}
+{# collection is required for the pagination and must not be further modified #}
 {% set collection_slice = collection.limit(start, limit) %} {# this is your pagination #}
 
-{# {% render collection layout: 'json' with {x: x, y: y, count: count} %} #}
+{% set page_title = page.title %}
+
+{% if uri.param('page') %}
+    {% set page_title = page_title ~ ', ' ~ 'PLUGIN_NEWS.PAGE'|t ~ ' ' ~ uri.param('page') %}
+{% endif %}
 
 {% block content %}
 <div class="wrapping">
-    <h1 class="title">
+    <h1 class="title vh">
         {{ page_title }}
     </h1>
 
     {% include 'partials/news/index.html.twig' %}
-    {% include 'partials/news/pagination.html.twig' %}
-
+    {% include 'partials/news/pagination.html.twig' with { collection: collection } %}
+    {# collection would be available anyway but to be sure  #}
 </div>
 {% endblock %}

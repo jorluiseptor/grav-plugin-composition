@@ -1,5 +1,6 @@
 PLUGIN_NEWS:
   CONF:
+    USE_BUILT_IN_CSS: 'Use built-in CSS'
     NEWS_PAGE_SLUG: News overview page
     NEWS_PER_PAGE: Posts per page
     DELTA: Pagination Delta
@@ -17,7 +18,7 @@ PLUGIN_NEWS:
   HERO: Cover image
 
   NO_ENTRIES: There are currently no posts published.
-
+  Page: page
   CONTINUE_READING: Read on
   # CONTINUE_READING: Continue reading
 

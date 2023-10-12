@@ -1,0 +1,15 @@
+{%- set object_context = object ?? {} -%}
+{%- set object_layout = object_context.layout ?? ('index-' ~ layout) -%}
+
+{# add route of this page to context #}
+{%- set object_context = object_context|merge( { 'parent': grav.page.rawRoute } ) -%}
+
+{% if collection|length == 0 -%}
+    <p class="notice notice--warning">
+        {{ 'PLUGIN_NEWS.NO_ENTRIES'|t }}
+    </p>
+{% endif -%}
+
+{% for object in collection -%}
+    {% render object layout: object_layout with object_context %}
+{% endfor -%}

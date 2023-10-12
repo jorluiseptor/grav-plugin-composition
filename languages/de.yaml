@@ -1,5 +1,6 @@
 PLUGIN_NEWS:
   CONF:
+    BUILT_IN_CSS: Mitgliefertes CSS verwenden
     NEWS_PAGE_SLUG: News Übersichtsseite
     NEWS_PER_PAGE: Beiträge pro Seite
     DELTA: Pagination Delta
@@ -17,7 +18,7 @@ PLUGIN_NEWS:
   HERO: Titelbild
 
   NO_ENTRIES: Aktuell sind keine Beiträge veröffentlicht.
-
+  PAGE: Seite
   CONTINUE_READING: Weiterlesen
 
   NEWER: Neuer

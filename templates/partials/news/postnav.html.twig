@@ -1,0 +1,21 @@
+{% set collection = directory.getCollection().public() %}
+{% set pager = news_postnav( collection, header.object ) %}
+{% if pager -%}
+<nav class="post__navigation postnav">
+    <h2 class="vh">{{ 'PLUGIN_NEWS.POST_NAV'|t|e }}</h1>
+    <div class="postnav__list">
+        {% if pager.newerPost -%}
+        <a class="postnav__link" href="{{ pager.newerPost.url }}" rel="next">
+            <span class="postnav__label">{{ 'PLUGIN_NEWS.NEXT_POST'|t|e }}<span class="vh">:</span></span>
+            {{ pager.newerPost.title }}
+        </a>
+        {% endif -%}
+        {% if pager.olderPost -%}
+        <a class="postnav__link" href="{{ pager.olderPost.url }}" rel="prev">
+            <span class="postnav__label">{{ 'PLUGIN_NEWS.PREV_POST'|t|e }}<span class="vh">:</span></span>
+            {{ pager.olderPost.title }}
+        </a>
+        {% endif -%}
+    </div>
+</nav>
+{% endif -%}

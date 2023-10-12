@@ -14,6 +14,8 @@ namespace Grav\Plugin\News\Flex\Types\News;
 use Grav\Common\Flex\Types\Generic\GenericObject;
 use Grav\Plugin\News\Utils;
 
+use Grav\Common\Grav;
+
 /**
  * Class NewsObject
  * @package Grav\Common\Flex\Generic
@@ -28,6 +30,7 @@ class NewsObject extends GenericObject
      */
     public function save()
     {
+        $grav = Grav::instance();
         // is this a new entry?
         if (!$this->exists())
         {
@@ -50,9 +53,16 @@ class NewsObject extends GenericObject
             */
 
             // change slug if slug is changed
-            if (isset($changes['slug']))
+            if ( array_key_exists( 'slug', $changes ) )
             {
-                $this->setSlug($changes['slug']);
+                // do not change to -nothing-!
+                if ( $changes['slug'] == null )
+                {
+                    $this->setSlug($this->getProperty('title'));
+                }
+                else {
+                    $this->setSlug($changes['slug']);
+                }
             }
         }
 

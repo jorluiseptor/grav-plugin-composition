@@ -16,9 +16,6 @@
     {% if pagination.newerUrl %}
         <li class="pager__item pager__item--prev">
             <a class="pager__link" rel="prev" href="{{ pagination.newerUrl }}">
-                <span class="hex">
-                    {{ svg('arrow-left')|raw }}
-                </span>
                 {{ 'PLUGIN_NEWS.NEWER'|t|e }}
             </a>
         </li>
@@ -44,9 +41,6 @@
         <li class="pager__item pager__item--next">
             <a class="pager__link" rel="next" href="{{ pagination.olderUrl }}">
                 {{ 'PLUGIN_NEWS.OLDER'|t|e }}
-                <span class="hex">
-                    {{ svg('arrow-right')|raw }}
-                </span>
             </a>
         </li>
     {% endif %}

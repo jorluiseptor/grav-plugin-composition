@@ -2,7 +2,7 @@
 
 The **News** Plugin is an extension for [Grav CMS](https://github.com/getgrav/grav) for Flex Object based blogging.
 
-> At the moment this is an very early stage with a bunch of open [Todos](#to-do). Also the PHP code could be significantly optimised by someone with experience. Please let me know if have ideas, via GitHub issue, Mastodon or at the grav discord serer.
+> At the moment this is an very early stage with a bunch of open [Todos](#to-do). Also the PHP code could be significantly optimised by someone with experience. Please let me know if have ideas, via GitHub issue, Mastodon or at the grav discord sevrer.
 
 If you have a lot of news/blog posts, the default way to manage these in grav (as a dumpster of subpages) can become a bit confusing and tiresome. Flex Objects open up some improvements, since it's organized more like a database.
 
@@ -85,7 +85,8 @@ I also took a bunch of code and ideas from [the grav pagination plugin](https://
 - [ ] Be more precise when checking if a post is public in news.php/addPage()
 - [ ] Remove all the commented code
 - [ ] Hook into FlexCollection construct to deliver the frontend only published posts (override the construct and call the parent construct + your filter)
-- [ ] Flex Templates and CSS (incl. option to disable css + customization guide)
+- [x] Flex Templates and CSS (incl. option to disable css + customization guide)
 - [ ] Create custom list design for the Flex Directory (like pages do) for more usability
+- [ ] integrate tags or categories?
 - [ ] Bring up quiality and functionality to be good enough for a gpm release
 

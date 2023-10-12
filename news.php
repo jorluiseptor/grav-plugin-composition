@@ -145,7 +145,7 @@ class NewsPlugin extends Plugin
     /**
      * create a page on the fly by using a vessel page
      */
-    protected function addPage(string $route, ?string $path, mixed $template): void
+    protected function addPage(string $route, ?string $path, $template): void
     {
         if ( $path )
         {
@@ -186,8 +186,10 @@ class NewsPlugin extends Plugin
                 $page->folder(basename($route));
                 $page->route($route);
                 $page->rawRoute($route);
+                $page->menu( $object['title'] );
+                $page->title( $object['title'] );
                 $page->modifyHeader( 'title', $object['title'] );
-                $page->modifyHeader('object', $path); // this here, i dynamically set that header.object value
+                $page->modifyHeader( 'object', $path ); // this here, i dynamically set that header.object value
                 $pages->addPage($page, $route);
             }
         }
@@ -206,10 +208,11 @@ class NewsPlugin extends Plugin
         $key = array_shift($parts);
         $path = array_shift($parts);
 
-        if ( '/' . $key == $config['news_page'] )
+        if ( $path && '/' . $key == $config['news_page'] )
         {
             $pages = $this->grav['pages'];
             $blog = $pages->find( $config['news_page'] );
+            // dd( $blog );
             // dd( $this->config->get('plugins.news') );
             // $this->addPage($route, $path, $config['news_page'] . '/' . $config['article_page']);
             $this->addPage($route, $path, $blog->children()->first());

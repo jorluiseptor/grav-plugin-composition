@@ -1,0 +1,51 @@
+{% set lang = grav.language.getActive|default( grav.language.getDefault ) -%}
+<article class="post">
+    <header class="post__header">
+        <h1 class="post__title">
+            {{ object.title }}
+        </h1>
+        <p class="post__date">
+            <time class="post__datetime dt-published" datetime="{{ object.date|date("c") }}">
+                {{ object.date|localizeddate( 'long', 'none', lang ) }}
+            </time>
+        </p>
+    </header>
+
+    {% if object.hero is defined -%}
+        {% set hero_image = object.media[object.hero] -%}
+        {% set image = {
+            small: hero_image.cropZoom(480,240).quality(85).url,
+            medium: hero_image.cropZoom(800,400).quality(85).url,
+            large: hero_image.cropZoom(960,480).quality(85).url,
+        } -%}
+        {% if hero_image.metadata.caption -%}
+        <figure class="post__visual">
+        {% else -%}
+        <div class="post__visual">
+        {% endif -%}
+        <picture class="post__picture">
+            <source srcset="{{ image.small }}" media="(max-width: 479px)">
+            <source srcset="{{ image.large }}" media="(min-width: 480px)">
+            <source srcset="{{ image.medium }}" media="(min-width: 800px)">
+            <img class="post__image"
+                src="{{ image.small }}"
+                width="480"
+                height="240"
+                alt="{{ hero_image.metadata.alt }}"
+                fetchpriority="high"
+                >
+        </picture>
+        {% if hero_image.metadata.caption -%}
+            <figcaption class="post__imagecaption">
+                {{ hero_image.metadata.caption }}
+            </figcaption>
+        </figure>
+        {% else -%}
+        </div>
+        {% endif -%}
+    {% endif -%}
+
+    <div class="post__content textflow">
+        {{ object.content|markdown|raw }}
+    </div>
+</article>
