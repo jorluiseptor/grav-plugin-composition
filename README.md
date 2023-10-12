@@ -64,7 +64,7 @@ If you don't know this method already, check out this [example of a dependecies 
 Add the following to your `.dependecies` file:
 
 ```
-    eventlist:
+    news:
         url: https://github.com/bitstarr/grap-plugin-news
         path: user/plugins/news
         branch: main
