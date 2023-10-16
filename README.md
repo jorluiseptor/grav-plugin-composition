@@ -65,7 +65,7 @@ Add the following to your `.dependecies` file:
 
 ```
     news:
-        url: https://github.com/bitstarr/grap-plugin-news
+        url: https://github.com/bitstarr/grav-plugin-news
         path: user/plugins/news
         branch: main
 ```
