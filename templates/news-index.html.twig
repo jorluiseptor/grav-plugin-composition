@@ -7,8 +7,6 @@
 {% set directory = flex.directory('news') %}
 {% set collection = directory.getCollection() %}
 
-{% set search = uri.param('search') %}
-
 {# GENERIC SETTINGS #}
 {% set current_page = uri.param('page')|default(1)|int %}
 {% set limit = config.plugins.news.news_per_page|int %}
@@ -17,6 +15,7 @@
 {# {% set collection = collection.filterBy({'published': true}) %} #}
 {% set collection = collection.public() %}
 
+{% set search = uri.param('search') %}
 {% if search %}
     {% set collection = collection.search(search) %}
 {% endif %}
@@ -38,7 +37,9 @@
         {{ page_title }}
     </h1>
 
-    {% include 'partials/news/index.html.twig' %}
+    {# render collection using flex templates #}
+    {% render collection_slice %}
+
     {% include 'partials/news/pagination.html.twig' with { collection: collection } %}
     {# collection would be available anyway but to be sure  #}
 </div>

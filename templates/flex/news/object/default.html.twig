@@ -34,6 +34,9 @@
                 alt="{{ hero_image.metadata.alt }}"
                 fetchpriority="high"
                 >
+            {# if you want to use flexible height with the cropResize(480, null) filter:
+                height="{{ ( hero_image.height / hero_image.width * 480 )|round(0,'ceil') }}"
+            #}
         </picture>
         {% if hero_image.metadata.caption -%}
             <figcaption class="post__imagecaption">

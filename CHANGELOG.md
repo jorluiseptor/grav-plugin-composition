@@ -1,3 +1,9 @@
+# v0.2.1
+##  2023-10-16
+
+1. [](#improved)
+    * Template improvements
+
 # v0.2.0
 ##  2023-10-12
 
