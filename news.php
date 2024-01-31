@@ -150,8 +150,18 @@ class NewsPlugin extends Plugin
         if ( $path )
         {
             // check if this post is public
+            $now = new \DateTime;
             $object = $this->grav['flex']->getObject( $path, 'news' );
-            if ( !$object || $object['published'] !== true )
+            if (
+                // exists and is published at least
+                !$object || $object['published'] !== true ||
+                // date is in the past
+                new \DateTime($object['date']) > $now ||
+                // publish date is set and in the past
+                $object['publish_date'] && new \DateTime($object['publish_date']) > $now ||
+                // unpublish date is set and in the future
+                $object['unpublish_date'] && new \DateTime($object['unpublish_date']) < $now
+            )
             {
                 return;
             }

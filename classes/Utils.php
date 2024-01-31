@@ -157,4 +157,24 @@ class Utils
         // $grav['debugger']->addMessage( $output );
         return $output;
     }
+
+    // provide list of tags for tags input (selectize)
+    public static function getTags()
+    {
+        $flex = Grav::instance()['flex'] ?? null;
+        $collection = $flex ? $flex->getCollection('news') : null;
+        if ( $collection )
+        {
+            $raw_tags = $collection->getDistinctValues( 'tags' );
+            $tags = [];
+            foreach ( $raw_tags as $tag )
+            {
+                // selectize option format
+                $tags[] = [ 'text' => $tag, 'value' => $tag ];
+            }
+            return $tags;
+        }
+
+        return null;
+    }
 }

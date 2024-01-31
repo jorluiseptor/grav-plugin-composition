@@ -74,6 +74,10 @@ Add the following to your `.dependecies` file:
 
 If you use the Admin Plugin, you can install the plugin directly by browsing the `Plugins`-menu and clicking on the `Add` button.
 
+## Weaknesses
+
+Since there is no multi language support implemented in Flex Objects (yet) this also affects this plugin. So be aware of this when considering using it. If ML support is necassary, you might opt for [grav's default approach to blogging](https://learn.getgrav.org/17/cookbook/tutorials/create-a-blog).
+
 ## Credits
 
 [Ricardo Verdugo](https://github.com/ricardo118) provided a lot of his experience and code to help me creating this. A real hero!
@@ -82,11 +86,13 @@ I also took a bunch of code and ideas from [the grav pagination plugin](https://
 
 ## To Do
 
-- [ ] Be more precise when checking if a post is public in news.php/addPage()
-- [ ] Remove all the commented code
-- [ ] Hook into FlexCollection construct to deliver the frontend only published posts (override the construct and call the parent construct + your filter)
+- [x] Be more precise when checking if a post is public in news.php/addPage()
 - [x] Flex Templates and CSS (incl. option to disable css + customization guide)
-- [ ] Create custom list design for the Flex Directory (like pages do) for more usability
+- [ ] ~~Hook into FlexCollection construct to deliver the frontend only published posts (override the construct and call the parent construct + your filter)~~ public filter-function is fine.
 - [ ] integrate tags or categories?
+- [ ] Template/partial for tag and monthly archive
+- [ ] Remove all the commented code
 - [ ] Bring up quiality and functionality to be good enough for a gpm release
-
+- [ ] Provide an RSS feed
+- [ ] Hook into sitemap plugin
+- [ ] Create custom list design for the Flex Directory (like pages do) for more usability

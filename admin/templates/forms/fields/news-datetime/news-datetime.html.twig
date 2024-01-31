@@ -1,0 +1,6 @@
+{% extends "forms/fields/datetime/datetime.html.twig" %}
+{#
+    we need to create a custom datetime input (which is simply a reference to the
+    og datetime filed) because we might run into conflicts with other plugins that
+    want to use custom date output in the flex list view too.
+#}

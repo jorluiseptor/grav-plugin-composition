@@ -35,14 +35,14 @@ class NewsObject extends GenericObject
         if (!$this->exists())
         {
             $this->setSlug($this->getProperty('title'));
-            $this->setProperty('created_at', time());
+            $this->setProperty('created_at', date( 'Y-m-d G:i:s' ));
         }
 
         // do we update a existing entry?
         $changes = $this->getChanges();
         if (!empty($changes))
         {
-            $this->setProperty('updated_at', time());
+            $this->setProperty('updated_at', date( 'Y-m-d G:i:s' ));
 
             // we could change the slug if the title changes?
             /*

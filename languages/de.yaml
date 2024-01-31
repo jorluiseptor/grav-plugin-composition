@@ -17,6 +17,10 @@ PLUGIN_NEWS:
   META: Metadaten
   HERO: Titelbild
 
+  PUBLISHED_DATE_ABBR: VÖ
+  UNPUBLISHED_DATE_ABBR: DP
+  TAGS: Tags
+
   NO_ENTRIES: Aktuell sind keine Beiträge veröffentlicht.
   PAGE: Seite
   CONTINUE_READING: Weiterlesen

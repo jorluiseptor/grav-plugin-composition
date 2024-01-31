@@ -17,6 +17,10 @@ PLUGIN_NEWS:
   META: Meta data
   HERO: Cover image
 
+  PUBLISHED_DATE_ABBR: PD
+  UNPUBLISHED_DATE_ABBR: UD
+  TAGS: Tags
+
   NO_ENTRIES: There are currently no posts published.
   Page: page
   CONTINUE_READING: Read on

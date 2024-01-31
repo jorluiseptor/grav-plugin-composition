@@ -1,7 +1,7 @@
 name: News
 slug: news
 type: plugin
-version: 0.2.1
+version: 0.2.2
 description: Flex Object based blogging
 icon: newspaper-o
 author:

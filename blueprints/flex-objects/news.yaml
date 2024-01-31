@@ -45,11 +45,17 @@ config:
         title:
           link: edit
         slug:
-          width: 10
+          width: 12
         publish_date:
-          width: 5
+          width: 4
           field:
-            label: pub
+            label: PLUGIN_NEWS.PUBLISHED_DATE_ABBR
+            type: news-isset
+        unpublish_date:
+          width: 4
+          field:
+            label: PLUGIN_NEWS.UNPUBLISHED_DATE_ABBR
+            type: news-isset
       options:
         per_page: 50
         order:
@@ -174,6 +180,32 @@ form:
             col1:
               type: column
               fields:
+                slug:
+                  type: text
+                  label: PLUGIN_NEWS.SLUG
+                  autocomplete: off
+                  validate:
+                    pattern: '[A-Za-z0-9\-]+'
+                    # required: true
+                hero:
+                  type: pagemediaselect
+                  label: PLUGIN_NEWS.HERO
+                  # folder: 'page://_heros'
+                  preview_images: true
+                  accept:
+                    - .jpg
+                    - .jpeg
+                tags:
+                  type: selectize
+                  label: PLUGIN_NEWS.TAGS
+                  selectize:
+                    data-options@: 'Grav\Plugin\News\Utils::getTags'
+                  validate:
+                    type: commalist
+
+            col2:
+              type: column
+              fields:
                 published:
                   type: toggle
                   label: PLUGIN_ADMIN.PUBLISHED
@@ -187,41 +219,21 @@ form:
                     required: true
 
                 date:
-                  type: datetime
+                  type: news-datetime
                   label: PLUGIN_ADMIN.DATE
                   help: PLUGIN_ADMIN.DATE_HELP
                   format: Y-m-d G:i
 
                 publish_date:
-                  type: datetime
+                  type: news-datetime
                   label: PLUGIN_ADMIN.PUBLISHED_DATE
                   toggleable: true
                   help: PLUGIN_ADMIN.PUBLISHED_DATE_HELP
                   format: Y-m-d G:i
 
                 unpublish_date:
-                  type: datetime
+                  type: news-datetime
                   label: PLUGIN_ADMIN.UNPUBLISHED_DATE
                   toggleable: true
                   help: PLUGIN_ADMIN.UNPUBLISHED_DATE_HELP
                   format: Y-m-d G:i
-
-            col2:
-              type: column
-              fields:
-                slug:
-                  type: text
-                  label: PLUGIN_NEWS.SLUG
-                  style: vertical
-                  autocomplete: off
-                  validate:
-                    pattern: '[A-Za-z0-9-]+'
-                    # required: true
-                hero:
-                  type: pagemediaselect
-                  label: PLUGIN_NEWS.HERO
-                  # folder: 'page://_heros'
-                  preview_images: true
-                  accept:
-                    - .jpg
-                    - .jpeg
