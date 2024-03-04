@@ -46,6 +46,10 @@ config:
           link: edit
         slug:
           width: 12
+        # tags:
+        #   field:
+        #     type: news-array
+        #   width: 12
         publish_date:
           width: 4
           field:
@@ -124,6 +128,7 @@ config:
         - title
         - slug
         - content
+        - tags
     ordering:
       date: DESC
 

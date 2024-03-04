@@ -22,7 +22,7 @@ use Doctrine\Common\Collections\Criteria;
  */
 class NewsCollection extends GenericCollection
 {
-    // custom filter for multiple values of the same key
+    // custom filter to test for multiple values on the same key (if field is type string)
     public function filterByArray( $key, $array ): NewsCollection
     {
         $expr = Criteria::expr();
@@ -34,6 +34,26 @@ class NewsCollection extends GenericCollection
         }
 
         return $this->matching( $criteria );
+    }
+
+    // custom filter for multiple values of the same key (if field is type array)
+    public function inArray($key, array $values): NewsCollection
+    {
+        $mappedCollection = $this->map(function($obj) use ($values, $key) {
+            foreach ($values as $value) {
+                if (in_array($value, $obj->getProperty($key, []))) {
+                    return $obj;
+                }
+            }
+            return false; // if element doesnt match what we want, make it false
+        });
+
+
+        $array_with_elements_remove = array_filter($mappedCollection->getElements(), function($e){
+            return $e; //remove all the unwanted elements that are false
+        });
+
+        return $this->createFrom(array_values($array_with_elements_remove));
     }
 
     // custom filter to get news intended to be public

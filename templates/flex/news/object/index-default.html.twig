@@ -44,6 +44,7 @@
             {{ object.content|truncate(400, true)|markdown|striptags('<p><strong><em>')|raw }}
         {% endif %}
 
+<p>{{ object.tags|join(', ')}}</p>
         <p>
             <a class="news__action" href="{{ url }}">
                 {{ 'PLUGIN_NEWS.CONTINUE_READING'|t }}

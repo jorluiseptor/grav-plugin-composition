@@ -15,9 +15,17 @@
 {# {% set collection = collection.filterBy({'published': true}) %} #}
 {% set collection = collection.public() %}
 
+{# are we looking for specific subsets? #}
+{% if uri.params('tag') %}
+    {% set tagsearch = uri.param('tag') %}
+    {% set collection = collection.inArray('tags', [tagsearch]) %}
+    {% set page_title = 'PLUGIN_NEWS.TAGGED_WITH'|t( tagsearch ) %}
+{% endif %}
+
 {% set search = uri.param('search') %}
 {% if search %}
     {% set collection = collection.search(search) %}
+    {% set page_title = 'PLUGIN_NEWS.SEARCH_FOR'|t( search ) %}
 {% endif %}
 
 {% set count = collection|length %}
@@ -25,11 +33,14 @@
 {# collection is required for the pagination and must not be further modified #}
 {% set collection_slice = collection.limit(start, limit) %} {# this is your pagination #}
 
-{% set page_title = page.title %}
+{% set page_title = page_title|default(page.title) %}
 
 {% if uri.param('page') %}
     {% set page_title = page_title ~ ', ' ~ 'PLUGIN_NEWS.PAGE'|t ~ ' ' ~ uri.param('page') %}
 {% endif %}
+
+{# chassis theme specific <title> injection #}
+{% set title_overwrite = page_title %}
 
 {% block content %}
 <div class="wrapping">
