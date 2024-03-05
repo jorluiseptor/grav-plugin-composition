@@ -28,6 +28,14 @@
     {% set page_title = 'PLUGIN_NEWS.SEARCH_FOR'|t( search ) %}
 {% endif %}
 
+{% set archive = uri.param('archive') %}
+{% if archive %}
+    {% set collection = collection.archive(archive) %}
+    {% if collection|length %}
+    {% set page_title = 'PLUGIN_NEWS.ARCHIVE_FOR'|t( archive|localizeddate( 'MMMM y', 'none', grav.language.getActive ) ) %}
+    {% endif %}
+{% endif %}
+
 {% set count = collection|length %}
 {# this is important: collection represents all posts, slice only the current page #}
 {# collection is required for the pagination and must not be further modified #}

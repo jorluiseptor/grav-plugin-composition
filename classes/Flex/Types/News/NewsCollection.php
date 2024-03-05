@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Grav\Plugin\News\Flex\Types\News;
 
+use DateTime;
 use Grav\Common\Flex\Types\Generic\GenericCollection;
 use Doctrine\Common\Collections\Criteria;
 
@@ -86,6 +87,30 @@ class NewsCollection extends GenericCollection
             ->andWhere( $expr->lte( 'date', $date->format("Y-m-d G:i") ) )
             ->orderBy( [ 'date' => Criteria::DESC ] );
 
+        return $this->matching( $criteria );
+    }
+
+    public function archive( $date ): NewsCollection
+    {
+        $expr = Criteria::expr();
+        $criteria = Criteria::create();
+
+        if ( preg_match( '@\d{4}-(1[0-2]|0[1-9])$@', $date, $matches ) )
+        {
+            $bom = new \DateTimeImmutable( $date );
+            $eom = $bom->modify('next month');
+
+            $criteria
+                ->where( $expr->gte( 'date', $bom->format("Y-m-d G:i") ) )
+                ->andWhere( $expr->lte( 'date', $eom->format("Y-m-d G:i") ) )
+                ->orderBy( [ 'date' => Criteria::DESC ] );
+
+            return $this->matching( $criteria );
+        }
+
+        // force empty as last resort
+        $criteria
+            ->where( $expr->eq( 'published', false ) );
         return $this->matching( $criteria );
     }
 }
