@@ -95,6 +95,7 @@ class NewsCollection extends GenericCollection
         $expr = Criteria::expr();
         $criteria = Criteria::create();
 
+        // Accept YYYY or YYYY-MM (2023 / 2020-10)
         if ( preg_match( '@\d{4}-(1[0-2]|0[1-9])$@', $date, $matches ) )
         {
             $bom = new \DateTimeImmutable( $date );
@@ -109,8 +110,24 @@ class NewsCollection extends GenericCollection
         }
 
         // force empty as last resort
+        // a collection filtered with the public() function should not include unpublished entries
         $criteria
             ->where( $expr->eq( 'published', false ) );
         return $this->matching( $criteria );
+    }
+
+    public function getArchiveIndex(): Array
+    {
+        $bucket = [];
+
+        foreach ( $this as $entry )
+        {
+            $date = new \DateTime( $entry->date );
+            array_push( $bucket, $date->format("Y-m"));
+        }
+        $bucket = array_unique( $bucket );
+        rsort( $bucket );
+
+        return $bucket;
     }
 }
