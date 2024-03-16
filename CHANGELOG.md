@@ -1,3 +1,17 @@
+# v0.3.0
+##  2024-03-16
+
+1. [](#new)
+    * Archives by Tag and Month
+    * Tags and Months are indexed in .yaml files for better performance and get rebuild after 24h
+    * 
+    
+2. [](#improved)
+    * Index page template title and headline are now contextual
+    * Tag list code for selectize element
+    * Example pages are now numbered, to prevent mismatching when creating dynamic entries
+
+
 # v0.2.2
 ##  2024-01-31
 

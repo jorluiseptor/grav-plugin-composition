@@ -90,8 +90,8 @@ I also took a bunch of code and ideas from [the grav pagination plugin](https://
 - [x] Flex Templates and CSS (incl. option to disable css + customization guide)
 - [ ] ~~Hook into FlexCollection construct to deliver the frontend only published posts (override the construct and call the parent construct + your filter)~~ public filter-function is fine.
 - [x] integrate tags or categories?
-- [ ] Template/partial for tags
-- [ ] Template/partial for monthly archive
+- [x] Template/partial for tags
+- [x] Template/partial for monthly archive
 - [ ] Remove all the commented code
 - [ ] Bring up quiality and functionality to be good enough for a gpm release
 - [ ] Provide an RSS feed

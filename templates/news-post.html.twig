@@ -8,10 +8,24 @@
 {% set post = directory.getObject(header.object) %}
 
 {% block content %}
+
 <div class="wrapping">
     {% render post %}
-    {% include 'partials/news/postnav.html.twig' with { directory: directory } %}
 
+    {% if post.tags|length -%}
+    <ul class="news__tagList">
+    {% for entry in post.tags %}
+        <li>
+            <a class="news__tag" href="{{ config.plugins.news.news_page }}/tag:{{ entry }}">
+                {{ entry }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif -%}
+
+    {% include 'partials/news/postnav.html.twig' with { directory: directory } %}
 </div>
+
 
 {% endblock %}

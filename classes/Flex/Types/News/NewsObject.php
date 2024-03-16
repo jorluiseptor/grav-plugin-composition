@@ -71,9 +71,8 @@ class NewsObject extends GenericObject
         {
             $this->setProperty('date', date( 'Y-m-d G:i' ));
         }
-        // dd($this);
 
-        // do we have tags?
+        // do we have to handle tags?
         if ( $this->getProperty('tags') )
         {
             $this->setTagIndex( $this->getProperty('tags') ?? [] );

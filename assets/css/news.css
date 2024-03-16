@@ -76,7 +76,10 @@ html {
 .news__dateArchive .list {
     columns: 15ch auto;
 }
-.news__tagsArchive .list {
+.post + .news__tagList {
+    margin-top: var( --gap-deca );
+}
+.news__tagList {
     display: flex;
     flex-wrap: wrap;
     gap: 1ex;
