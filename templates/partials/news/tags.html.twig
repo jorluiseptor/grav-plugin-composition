@@ -1,0 +1,16 @@
+{% set tags = collection.getTagsIndex() %}
+{% if tags|length %}
+<section class="news__tagArchive news__archive">
+    <h2 class="news__title">{{ 'PLUGIN_NEWS.TAGS'|t|e }}</h2>
+
+    <ul class="news__tagList">
+    {% for entry in tags %}
+        <li>
+            <a class="news__tag" href="{{ config.plugins.news.news_page }}/tag:{{ entry }}">
+                {{ entry }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+</section>
+{% endif %}

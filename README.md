@@ -10,7 +10,7 @@ If you have a lot of news/blog posts, the default way to manage these in grav (a
 
 ## Usage
 
-You have to create a page a root level where your blog overview/index will be. Let's say `news/news.md`. Additionally you need to have a basic article page inside of this, for example `/news/article/post.md`. The index page needs to be set as `news_page` in the plugins options. The article page does not need to be configured, since the plugin simply uses the first child page.
+You have to create a page a root level where your blog overview/index will be. Let's say `news/news.md`. Additionally you need to have a basic article page inside of this, for example `/news/article/post.md`. The index page needs to be set as `news_page` in the plugins options. The article page does not need to be configured, since the plugin simply uses the first child page. If you want to place an archive page under your blog page (/news/archive/) make sure to number the subpages (`01.article`, `02.archive`).
 
 The article is used as a vessel, since we hook into grav's routing and whenever the URL of a post is called, we manipilate the vessel page on the fly and insert some information as well as change the slug, so that pops into place for this posts URL.
 
@@ -33,11 +33,11 @@ Note that if you use the Admin Plugin, a file with your configuration named news
 
 ## Customization
 
-TBA
+TODO
 
 ## Installation
 
-Installing the News plugin can be done in one of three ways: The GPM (Grav Package Manager) installation method lets you quickly install the plugin with a simple terminal command, the manual method lets you do so via a zip file, and the admin method lets you do so via the Admin Plugin.
+Installing the News plugin can be done in multiple ways: The GPM (Grav Package Manager) installation method lets you quickly install the plugin with a simple terminal command, the manual method lets you do so via a zip file, and the admin method lets you do so via the Admin Plugin.
 
 ### GPM Installation (Preferred)
 
@@ -76,7 +76,7 @@ If you use the Admin Plugin, you can install the plugin directly by browsing the
 
 ## Weaknesses
 
-Since there is no multi language support implemented in Flex Objects (yet) this also affects this plugin. So be aware of this when considering using it. If ML support is necassary, you might opt for [grav's default approach to blogging](https://learn.getgrav.org/17/cookbook/tutorials/create-a-blog).
+Since there is no multi language support implemented in Flex Objects (yet), this also affects this plugin. So be aware of this when considering using it. If ML support is necassary, you might opt for [grav's default approach to blogging](https://learn.getgrav.org/17/cookbook/tutorials/create-a-blog).
 
 ## Credits
 
@@ -89,8 +89,9 @@ I also took a bunch of code and ideas from [the grav pagination plugin](https://
 - [x] Be more precise when checking if a post is public in news.php/addPage()
 - [x] Flex Templates and CSS (incl. option to disable css + customization guide)
 - [ ] ~~Hook into FlexCollection construct to deliver the frontend only published posts (override the construct and call the parent construct + your filter)~~ public filter-function is fine.
-- [ ] integrate tags or categories?
-- [ ] Template/partial for tag and monthly archive
+- [x] integrate tags or categories?
+- [x] Template/partial for tags
+- [x] Template/partial for monthly archive
 - [ ] Remove all the commented code
 - [ ] Bring up quiality and functionality to be good enough for a gpm release
 - [ ] Provide an RSS feed

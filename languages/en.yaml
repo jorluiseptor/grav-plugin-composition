@@ -26,6 +26,11 @@ PLUGIN_NEWS:
   CONTINUE_READING: Read on
   # CONTINUE_READING: Continue reading
 
+  ARCHIVE: Archive
+  ARCHIVE_FOR: Archive for %s
+  SEARCH_FOR: Search for %s
+  TAGGED_WITH: Tagged with %s
+
   NEWER: Newer
   OLDER: Older
 

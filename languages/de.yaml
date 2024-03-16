@@ -25,6 +25,11 @@ PLUGIN_NEWS:
   PAGE: Seite
   CONTINUE_READING: Weiterlesen
 
+  ARCHIVE: Archiv
+  ARCHIVE_FOR: Archiv für %s
+  SEARCH_FOR: Suche nach %s
+  TAGGED_WITH: Getaggt mit %s
+
   NEWER: Neuer
   OLDER: Älter
 
