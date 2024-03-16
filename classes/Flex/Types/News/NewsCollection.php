@@ -12,8 +12,10 @@ declare(strict_types=1);
 namespace Grav\Plugin\News\Flex\Types\News;
 
 use DateTime;
+use Grav\Common\Grav;
 use Grav\Common\Flex\Types\Generic\GenericCollection;
 use Doctrine\Common\Collections\Criteria;
+use Grav\Common\File\CompiledYamlFile;
 
 /**
  * Class NewsCollection
@@ -118,16 +120,54 @@ class NewsCollection extends GenericCollection
 
     public function getArchiveIndex(): Array
     {
-        $bucket = [];
-
-        foreach ( $this as $entry )
+        // get from index file
+        $path = Grav::instance()['locator']->findResource( 'user-data://' ) . '/news-dates.yaml';
+        // if file does not exist, or is older than 24h
+        if ( !file_exists( $path ) || time()-filemtime( $path ) > 24 * 3600 )
         {
-            $date = new \DateTime( $entry->date );
-            array_push( $bucket, $date->format("Y-m"));
-        }
-        $bucket = array_unique( $bucket );
-        rsort( $bucket );
+            // create and fill index file
+            touch( $path );
 
-        return $bucket;
+            $dates = [];
+            foreach ( $this->public() as $entry )
+            {
+                $date = new \DateTime( $entry->date );
+                array_push( $dates, $date->format("Y-m"));
+            }
+            rsort( $dates );
+
+            $datesFile = CompiledYamlFile::instance($path);
+            $datesFile->content(array_unique($dates));
+            $datesFile->save();
+            // create a fresh index file after 24h to prevent conflicts with unpublished/pre planned posts
+        }
+
+        $datesFile = CompiledYamlFile::instance($path);
+        $dates = $datesFile->content();
+
+        return $dates;
+    }
+
+    public function getTagsIndex(): Array
+    {
+        // get from index file
+        $path = Grav::instance()['locator']->findResource( 'user-data://' ) . '/news-tags.yaml';
+        // if file does not exist, or is older than 24h
+        if ( !file_exists( $path ) || time()-filemtime( $path ) > 24 * 3600 )
+        {
+            // create and fill index file
+            touch( $path );
+            $tags = $this->public()->getDistinctValues( 'tags' );
+            sort( $tags );
+            $tagsFile = CompiledYamlFile::instance($path);
+            $tagsFile->content(array_unique($tags));
+            $tagsFile->save();
+            // create a fresh index file after 24h to prevent conflicts with unpublished/pre planned posts
+        }
+        // get contents
+        $tagsFile = CompiledYamlFile::instance($path);
+        $tags = $tagsFile->content();
+
+        return $tags;
     }
 }

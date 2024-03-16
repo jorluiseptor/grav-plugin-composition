@@ -11,9 +11,9 @@ declare(strict_types=1);
 
 namespace Grav\Plugin\News\Flex\Types\News;
 
-use Grav\Common\Flex\Types\Generic\GenericObject;
 use Grav\Plugin\News\Utils;
-
+use Grav\Common\Flex\Types\Generic\GenericObject;
+use Grav\Common\File\CompiledYamlFile;
 use Grav\Common\Grav;
 
 /**
@@ -73,11 +73,20 @@ class NewsObject extends GenericObject
         }
         // dd($this);
 
+        // do we have tags?
+        if ( $this->getProperty('tags') )
+        {
+            $this->setTagIndex( $this->getProperty('tags') ?? [] );
+        }
+
         // is the date field empty?
         if (!$this->getProperty('date'))
         {
             $this->setSlug($this->getProperty('title'));
         }
+
+        // save to date index
+        $this->setDateIndex( $this->getProperty('date') ?? null );
 
         if ($this->checkDuplicateKey($this->getProperty('title'))) {
             // dump( 'save');
@@ -104,6 +113,48 @@ class NewsObject extends GenericObject
             $this->setSlug($this->getProperty('title') . ' ' . time() );
         }
         return true;
+    }
+
+    public function setDateIndex($date)
+    {
+        $path = Grav::instance()['locator']->findResource('user-data://') . '/news-dates.yaml';
+        if (!file_exists($path))
+        {
+            touch($path);
+        }
+        $dateFile = CompiledYamlFile::instance($path);
+
+        $existingTags = (array) $dateFile->content();
+        $datetime = new \DateTime( $date );
+        $date = $datetime->format("Y-m");
+        $now = new \DateTime('now');
+        if ( $now->format( 'Y-m' ) < $date )
+        {
+            return;
+        }
+
+        $dates = array_merge( $existingTags, [ $date ] );
+        rsort( $dates );
+
+        $dateFile->content(array_unique($dates));
+        $dateFile->save();
+    }
+
+    public function setTagIndex(array $tags)
+    {
+        $path = Grav::instance()['locator']->findResource('user-data://') . '/news-tags.yaml';
+        if (!file_exists($path))
+        {
+            touch($path);
+        }
+        $tagsFile = CompiledYamlFile::instance($path);
+
+        $existingTags = (array) $tagsFile->content();
+        $tags = array_merge( $existingTags, $tags );
+        sort( $tags );
+
+        $tagsFile->content(array_unique($tags));
+        $tagsFile->save();
     }
 
 }

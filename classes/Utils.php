@@ -165,7 +165,7 @@ class Utils
         $collection = $flex ? $flex->getCollection('news') : null;
         if ( $collection )
         {
-            $raw_tags = $collection->getDistinctValues( 'tags' );
+            $raw_tags = $collection->getTagsIndex();
             $tags = [];
             foreach ( $raw_tags as $tag )
             {

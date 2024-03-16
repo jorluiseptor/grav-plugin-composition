@@ -1,15 +1,19 @@
 {% set lang = grav.language.getActive|default( grav.language.getDefault ) -%}
 {% set archive = collection.getArchiveIndex() %}
 {% if archive|length %}
-<h2>Archiv</h2>
+<section class="news__dateArchive news__archive">
+    <h2 class="news__title">{{ 'PLUGIN_NEWS.ARCHIVE'|t|e }}</h2>
 
-<ul>
-{% for entry in archive %}
-    <li>
-        <a href="{{ config.plugins.news.news_page }}/archive:{{ entry }}">
-            {{ entry|localizeddate( 'yyyy, MMMM', 'none', lang ) }}
-        </a>
-    </li>
-{% endfor %}
-</ul>
+    <div class="textflow">
+        <ul class="list">
+        {% for entry in archive %}
+            <li>
+                <a href="{{ config.plugins.news.news_page }}/archive:{{ entry }}">
+                    {{ entry|localizeddate( 'yyyy, MMMM', 'none', lang ) }}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</section>
 {% endif %}

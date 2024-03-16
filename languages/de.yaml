@@ -24,6 +24,8 @@ PLUGIN_NEWS:
   NO_ENTRIES: Aktuell sind keine Beiträge veröffentlicht.
   PAGE: Seite
   CONTINUE_READING: Weiterlesen
+
+  ARCHIVE: Archiv
   ARCHIVE_FOR: Archiv für %s
   SEARCH_FOR: Suche nach %s
   TAGGED_WITH: Getaggt mit %s

@@ -70,6 +70,24 @@ html {
 .news + .pager {
     margin-top: var( --gap-kilo  );
 }
+.news__archive + .news__archive {
+    margin-top: var( --gap-hecto );
+}
+.news__dateArchive .list {
+    columns: 15ch auto;
+}
+.news__tagsArchive .list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1ex;
+}
+.news__tag {
+    display: inline-block;
+    padding: 1ex;
+    line-height: 1;
+    border: min( 1px, .1em ) solid var( --default-border-ink );
+    border-radius: .2em;
+}
 .pager {
     display: flex;
     justify-content: center;
