@@ -16,6 +16,7 @@ PLUGIN_NEWS:
   EXCERPT: Excerpt
   META: Meta data
   HERO: Cover image
+  HERO_SOURCE: Cover image credit
 
   PUBLISHED_DATE_ABBR: PD
   UNPUBLISHED_DATE_ABBR: UD

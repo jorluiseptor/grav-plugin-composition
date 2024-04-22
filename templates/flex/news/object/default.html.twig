@@ -18,11 +18,7 @@
             medium: hero_image.cropZoom(800,400).quality(85).url,
             large: hero_image.cropZoom(960,480).quality(85).url,
         } -%}
-        {% if hero_image.metadata.caption -%}
         <figure class="post__visual">
-        {% else -%}
-        <div class="post__visual">
-        {% endif -%}
         <picture class="post__picture">
             <source srcset="{{ image.small }}" media="(max-width: 479px)">
             <source srcset="{{ image.large }}" media="(min-width: 480px)">
@@ -38,14 +34,13 @@
                 height="{{ ( hero_image.height / hero_image.width * 480 )|round(0,'ceil') }}"
             #}
         </picture>
-        {% if hero_image.metadata.caption -%}
+        {% if hero_image.metadata.caption or object.hero_source -%}
             <figcaption class="post__imagecaption">
                 {{ hero_image.metadata.caption }}
+                {{ object.hero_source }}
             </figcaption>
-        </figure>
-        {% else -%}
-        </div>
         {% endif -%}
+        </figure>
     {% endif -%}
 
     <div class="post__content textflow">

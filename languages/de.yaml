@@ -16,6 +16,7 @@ PLUGIN_NEWS:
   EXCERPT: Vorschautext
   META: Metadaten
   HERO: Titelbild
+  HERO_SOURCE: Bildnachweis Titelbild
 
   PUBLISHED_DATE_ABBR: VÖ
   UNPUBLISHED_DATE_ABBR: DP

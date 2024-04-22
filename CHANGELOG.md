@@ -1,10 +1,18 @@
+# v0.3.1
+##  2024-04-22
+
+1. [](#new)
+    * Field for cover image credit information
+
+2. [](#improved)
+    * Templates improved for image credits
+
 # v0.3.0
 ##  2024-03-16
 
 1. [](#new)
     * Archives by Tag and Month
     * Tags and Months are indexed in .yaml files for better performance and get rebuild after 24h
-    * 
     
 2. [](#improved)
     * Index page template title and headline are now contextual

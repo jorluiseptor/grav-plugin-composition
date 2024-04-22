@@ -2,11 +2,11 @@
 {% set lang = grav.language.getActive|default( grav.language.getDefault ) -%}
 <article class="news">
     <header class="news__header">
-        <h1 class="news__title">
+        <h2 class="news__title">
             <a class="news__titleLink" href="{{ url }}">
                 {{ object.title }}
             </a>
-        </h1>
+        </h2>
         <p class="news__date">
             <time class="news__datetime dt-published" datetime="{{ object.date|date("c") }}">
                 {{ object.date|localizeddate( 'long', 'none', lang ) }}
@@ -15,26 +15,32 @@
     </header>
 
     {% if object.hero is defined -%}
-        <a href="{{ url }}">
-        {% set hero_image = object.media[object.hero] -%}
-        {% set image = {
-            small: hero_image.cropZoom(480,240).quality(85).url,
-            medium: hero_image.cropZoom(800,400).quality(85).url,
-            large: hero_image.cropZoom(960,480).quality(85).url,
-        } -%}
-        <picture class="news__picture">
-            <source srcset="{{ image.small }}" media="(max-width: 479px)">
-            <source srcset="{{ image.large }}" media="(min-width: 480px)">
-            <source srcset="{{ image.medium }}" media="(min-width: 800px)">
-            <img class="news__image"
-                src="{{ image.small }}"
-                width="480"
-                height="240"
-                alt="{{ hero_image.metadata.alt }}"
-                loading="lazy"
-                >
-        </picture>
-        </a>
+        <figure class="news__visual">
+            {% set hero_image = object.media[object.hero] -%}
+            {% set image = {
+                small: hero_image.cropZoom(480,240).quality(85).url,
+                medium: hero_image.cropZoom(800,400).quality(85).url,
+                large: hero_image.cropZoom(960,480).quality(85).url,
+            } -%}
+            <picture class="news__picture">
+                <source srcset="{{ image.small }}" media="(max-width: 479px)">
+                <source srcset="{{ image.large }}" media="(min-width: 480px)">
+                <source srcset="{{ image.medium }}" media="(min-width: 800px)">
+                <img class="news__image"
+                    src="{{ image.small }}"
+                    width="480"
+                    height="240"
+                    alt="{{ hero_image.metadata.alt }}"
+                    loading="lazy"
+                    >
+            </picture>
+            {% if hero_image.metadata.caption or object.hero_source -%}
+                <figcaption class="news__imagecaption">
+                    {{ hero_image.metadata.caption }}
+                    {{ object.hero_source }}
+                </figcaption>
+            {% endif -%}
+        </figure>
     {% endif -%}
 
     <div class="news__excerpt textflow">
@@ -45,7 +51,7 @@
         {% endif %}
 
         <p>
-            <a class="news__action" href="{{ url }}">
+            <a class="news__action" href="{{ url }}" tabindex="-1">
                 {{ 'PLUGIN_NEWS.CONTINUE_READING'|t }}
             </a>
         </p>

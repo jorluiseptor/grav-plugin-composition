@@ -200,6 +200,10 @@ form:
                   accept:
                     - .jpg
                     - .jpeg
+                hero_source:
+                  type: text
+                  label: PLUGIN_NEWS.HERO_SOURCE
+                  toggleable: true
                 tags:
                   type: selectize
                   label: PLUGIN_NEWS.TAGS
