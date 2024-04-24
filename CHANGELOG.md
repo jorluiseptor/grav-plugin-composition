@@ -1,3 +1,10 @@
+# v0.4.0
+##  2024-04-24
+
+1. [](#new)
+    * On save, we create a shadow property (content) from our original content (rawContent) to make sure any file reference (images, links) is pointing in the Flex Object folder.  
+    This is breaking to prior versions! To fix you existing entries, duplicate 'content' into 'rawContent' in all Flex Objects (JSON files).
+
 # v0.3.1
 ##  2024-04-22
 

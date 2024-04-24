@@ -87,8 +87,14 @@ class NewsObject extends GenericObject
         // save to date index
         $this->setDateIndex( $this->getProperty('date') ?? null );
 
+        // create a shadow property (that is used in frontend) with correct media paths added
+        $mediaPattern = '/\[(.*?)\]\((?!https?:\/\/|\/)(.*?)\)/';
+        $mediaReplacement = '[$1](/' . $this->getMediaFolder() . '/$2)';
+        $mediaContent = preg_replace( $mediaPattern, $mediaReplacement, $this->getProperty('rawContent') );
+        $this->setProperty( 'content', $mediaContent );
+
+        // save
         if ($this->checkDuplicateKey($this->getProperty('title'))) {
-            // dump( 'save');
             parent::save();
         }
     }

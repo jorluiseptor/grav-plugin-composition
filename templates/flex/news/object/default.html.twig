@@ -44,6 +44,6 @@
     {% endif -%}
 
     <div class="post__content textflow">
-        {{ object.content|markdown|raw }}
+        {{ object.content|markdown|shortcodes|raw }}
     </div>
 </article>
