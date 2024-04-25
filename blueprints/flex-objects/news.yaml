@@ -193,6 +193,7 @@ form:
                   accept:
                     - .jpg
                     - .jpeg
+                    - .webp
                 hero_source:
                   type: text
                   label: PLUGIN_NEWS.HERO_SOURCE
