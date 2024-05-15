@@ -153,6 +153,7 @@ form:
       type: file
       label: PLUGIN_NEWS.MEDIA
       multiple: true
+      limit: 0
       style: vertical
       accept:
         - '*'

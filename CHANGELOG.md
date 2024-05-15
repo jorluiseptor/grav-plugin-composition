@@ -1,3 +1,9 @@
+# v0.4.1
+##  2024-05-15
+
+1. [](#improved)
+    * File upload count limit removed (comes by default from form plugin)
+
 # v0.4.0
 ##  2024-04-24
 
