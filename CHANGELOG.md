@@ -1,3 +1,10 @@
+# v0.4.2
+##  2024-06-10
+
+1. [](#bugfix)
+    * Saving a new post with a custom slug, the slug did not get saved but was replaced with a generated from title. Custom slugs will now be saved when creating a new post.
+
+
 # v0.4.1
 ##  2024-05-15
 
