@@ -16,6 +16,11 @@ The article is used as a vessel, since we hook into grav's routing and whenever 
 
 Take a look in the `examples` folder and use this structure as a template for you pages. They are pretty much blank, because the rest is plguin and template magic.
 
+## RSS 
+
+An RSS feed is available by adding `.rss` to your news_page URL. E. g. https://example.com/news.rss  
+You can customize the output by copying and modifing the news-index.rss.twig in your theme's templates folder.
+
 ## Configuration
 
 Before configuring this plugin, you should copy the `user/plugins/news/news.yaml` to `user/config/plugins/news.yaml` and only edit that copy.
@@ -24,9 +29,14 @@ Here is the default configuration and an explanation of available options:
 
 ```yaml
 enabled: true
+built_in_css: false
 news_page: /news
 news_per_page: 20
 pagination_delta: 2
+feed:
+  limit: 10
+  title: 'Chassis News Feed'
+  description: ''
 ```
 
 Note that if you use the Admin Plugin, a file with your configuration named news.yaml will be saved in the `user/config/plugins/`-folder once the configuration is saved in the Admin.
@@ -94,6 +104,6 @@ I also took a bunch of code and ideas from [the grav pagination plugin](https://
 - [x] Template/partial for monthly archive
 - [ ] Remove all the commented code
 - [ ] Bring up quiality and functionality to be good enough for a gpm release
-- [ ] Provide an RSS feed
+- [x] Provide an RSS feed/template
 - [ ] Hook into sitemap plugin
 - [ ] Create custom list design for the Flex Directory (like pages do) for more usability

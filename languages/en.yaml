@@ -5,6 +5,9 @@ PLUGIN_NEWS:
     NEWS_PER_PAGE: Posts per page
     DELTA: Pagination Delta
     DELTA_HELP: 'How many pages to show left and right of the current page. 0 means all.'
+    FEED_LIMIT: Number of post in RSS feed
+    FEED_TITLE: General title for RSS feed
+    FEED_DESCRIPTION: Description of RSS feed
 
   NEWS: News
   PLUGIN_DESC: Flex Object based blogging

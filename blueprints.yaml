@@ -1,7 +1,7 @@
 name: News
 slug: news
 type: plugin
-version: 0.4.2
+version: 0.4.3
 description: Flex Object based blogging
 icon: newspaper-o
 author:
@@ -44,7 +44,6 @@ form:
         type: bool
 
     news_page:
-      # type: text
       type: pages
       # start_route: /
       show_modular: false
@@ -52,8 +51,6 @@ form:
       label: PLUGIN_NEWS.CONF.NEWS_PAGE_SLUG
       validate:
         required: true
-        # type: array
-        # type: slug
 
     news_per_page:
       type: number
@@ -69,3 +66,22 @@ form:
       validate:
         required: true
         type: number
+
+
+    feed.limit:
+      type: number
+      label: PLUGIN_NEWS.CONF.FEED_LIMIT
+      default: 10
+      validate:
+        required: true
+        type: number
+
+    feed.title:
+      type: text
+      label: PLUGIN_NEWS.CONF.FEED_TITLE
+      validate:
+        required: true
+
+    feed.sescription:
+      type: text
+      label: PLUGIN_NEWS.CONF.FEED_DESCRIPTION

@@ -3,3 +3,7 @@ built_in_css: true
 news_page: /news
 news_per_page: 20
 pagination_delta: 2
+feed:
+  limit: 10
+  title: ''
+  description: ''
