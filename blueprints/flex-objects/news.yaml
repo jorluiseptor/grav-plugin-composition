@@ -139,6 +139,7 @@ form:
       type: text
       label: PLUGIN_NEWS.TITLE
       autofocus: true
+      autocomplete: off
       style: vertical
       validate:
         required: true
@@ -227,6 +228,7 @@ form:
                   label: PLUGIN_ADMIN.DATE
                   help: PLUGIN_ADMIN.DATE_HELP
                   format: Y-m-d G:i
+                  autocomplete: off
 
                 publish_date:
                   type: news-datetime
@@ -234,6 +236,7 @@ form:
                   toggleable: true
                   help: PLUGIN_ADMIN.PUBLISHED_DATE_HELP
                   format: Y-m-d G:i
+                  autocomplete: off
 
                 unpublish_date:
                   type: news-datetime
@@ -241,3 +244,4 @@ form:
                   toggleable: true
                   help: PLUGIN_ADMIN.UNPUBLISHED_DATE_HELP
                   format: Y-m-d G:i
+                  autocomplete: off

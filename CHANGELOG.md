@@ -1,3 +1,9 @@
+# v0.4.4
+##  2024-06-27
+
+1. [](#improved)
+    * Disabled autocomplete for some fields
+  
 # v0.4.3
 ##  2024-06-12
 
