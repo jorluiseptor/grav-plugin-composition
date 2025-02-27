@@ -15,7 +15,7 @@ config:
       list:
         route: '/composition'
         title: Compositions
-        icon: music
+        icon: fa-music
         # Authorization to collection admin
         authorize: ['admin.pages.list', 'admin.super']
         # Priority -10 .. 10 (highest goes up)
@@ -27,7 +27,7 @@ config:
     # Permissions
     permissions:
       # Primary permissions
-      admin.news:
+      admin.composition:
         type: crudpl
         label: Compositions
 

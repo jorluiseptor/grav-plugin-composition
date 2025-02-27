@@ -77,8 +77,8 @@ class CompositionPlugin extends Plugin
         $flex = $event->flex;
 
         $flex->addDirectoryType(
-            'news',
-            'blueprints://flex-objects/news.yaml'
+            'composition',
+            'blueprints://flex-objects/composition.yaml'
         );
 
     }
