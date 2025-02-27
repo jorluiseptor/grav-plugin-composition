@@ -7,5 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'Grav\\Plugin\\NewsPlugin' => $baseDir . '/news.php',
+    'Grav\\Plugin\\CompositionPlugin' => $baseDir . '/composition.php',
 );

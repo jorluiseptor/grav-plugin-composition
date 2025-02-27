@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Grav\\Plugin\\News\\' => array($baseDir . '/classes'),
+    'Grav\\Plugin\\Composition\\' => array($baseDir . '/classes'),
 );

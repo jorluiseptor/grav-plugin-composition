@@ -4,17 +4,17 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf2886f75b8c7afa2cd7e8b5389c1e8c6
+class ComposerStaticInit0f2e4f5bb1f8091f311b6b95b77e0c57
 {
     public static $prefixLengthsPsr4 = array (
         'G' => 
         array (
-            'Grav\\Plugin\\News\\' => 17,
+            'Grav\\Plugin\\Composition\\' => 24,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Grav\\Plugin\\News\\' => 
+        'Grav\\Plugin\\Composition\\' => 
         array (
             0 => __DIR__ . '/../..' . '/classes',
         ),
@@ -22,15 +22,15 @@ class ComposerStaticInitf2886f75b8c7afa2cd7e8b5389c1e8c6
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Grav\\Plugin\\NewsPlugin' => __DIR__ . '/../..' . '/news.php',
+        'Grav\\Plugin\\CompositionPlugin' => __DIR__ . '/../..' . '/composition.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf2886f75b8c7afa2cd7e8b5389c1e8c6::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf2886f75b8c7afa2cd7e8b5389c1e8c6::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf2886f75b8c7afa2cd7e8b5389c1e8c6::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0f2e4f5bb1f8091f311b6b95b77e0c57::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0f2e4f5bb1f8091f311b6b95b77e0c57::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit0f2e4f5bb1f8091f311b6b95b77e0c57::$classMap;
 
         }, null, ClassLoader::class);
     }

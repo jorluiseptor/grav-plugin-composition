@@ -1,24 +1,23 @@
-<?php return array (
-  'root' => 
-  array (
-    'pretty_version' => 'dev-main',
-    'version' => 'dev-main',
-    'aliases' => 
-    array (
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'type' => 'grav-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => '0c06af29dc1fddbf4cb9b291776841cedb21e13e',
+        'name' => 'bitstarr/news',
+        'dev' => true,
     ),
-    'reference' => '043bd1720f006bb1a84af0dbf396a6637e3e2dcc',
-    'name' => 'bitstarr/news',
-  ),
-  'versions' => 
-  array (
-    'bitstarr/news' => 
-    array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '043bd1720f006bb1a84af0dbf396a6637e3e2dcc',
+    'versions' => array(
+        'bitstarr/news' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'grav-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '0c06af29dc1fddbf4cb9b291776841cedb21e13e',
+            'dev_requirement' => false,
+        ),
     ),
-  ),
 );

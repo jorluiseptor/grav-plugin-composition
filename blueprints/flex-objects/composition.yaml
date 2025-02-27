@@ -1,5 +1,5 @@
-title: PLUGIN_NEWS.NEWS
-description: PLUGIN_NEWS.PLUGIN_DESC
+title: Composition
+description: For publishing music compositions as Flex Objects
 type: flex-objects
 
 # Flex Configuration
@@ -8,14 +8,14 @@ config:
   admin:
     # Admin router (optional)
     router:
-      path: '/news'
+      path: '/composition'
 
     # Admin menu (optional)
     menu:
       list:
-        route: '/news'
-        title: PLUGIN_NEWS.NEWS
-        icon: fa-newspaper-o
+        route: '/composition'
+        title: Compositions
+        icon: music
         # Authorization to collection admin
         authorize: ['admin.pages.list', 'admin.super']
         # Priority -10 .. 10 (highest goes up)
@@ -29,7 +29,7 @@ config:
       # Primary permissions
       admin.news:
         type: crudpl
-        label: PLUGIN_NEWS.NEWS
+        label: Compositions
 
     # List view
     list:
@@ -46,10 +46,6 @@ config:
           link: edit
         slug:
           width: 12
-        # tags:
-        #   field:
-        #     type: news-array
-        #   width: 12
         publish_date:
           width: 4
           field:
