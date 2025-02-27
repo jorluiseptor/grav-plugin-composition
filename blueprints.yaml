@@ -1,9 +1,9 @@
-name: News
-slug: news
+name: Composition
+slug: composition
 type: plugin
 version: 0.4.4
 description: Flex Object based blogging
-icon: newspaper-o
+icon: music
 author:
   name: Sebastian Laube
   email: hello@sebastianlaube.de
@@ -43,7 +43,7 @@ form:
       validate:
         type: bool
 
-    news_page:
+    collection_page:
       type: pages
       # start_route: /
       show_modular: false

@@ -1,4 +1,4 @@
-PLUGIN_NEWS:
+PLUGIN_COMPOSITION:
   CONF:
     USE_BUILT_IN_CSS: 'Use built-in CSS'
     NEWS_PAGE_SLUG: News overview page

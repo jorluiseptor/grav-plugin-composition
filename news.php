@@ -9,10 +9,10 @@ use Grav\Plugin\News\Utils;
 use Twig\TwigFunction;
 
 /**
- * Class NewsPlugin
+ * Class CompositionPlugin
  * @package Grav\Plugin
  */
-class NewsPlugin extends Plugin
+class CompositionPlugin extends Plugin
 {
     public $features = [
         'blueprints' => 0,

@@ -1,7 +1,5 @@
 {% extends 'partials/base.html.twig' %}
-{% if config.plugins.news.built_in_css %}
-    {% do assets.addCss('plugin://news/assets/css/news.css', 99) %}
-{% endif %}
+
 
 {% set flex = grav.get('flex') %}
 {% set directory = flex.directory('news') %}
