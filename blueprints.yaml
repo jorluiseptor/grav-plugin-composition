@@ -2,15 +2,15 @@ name: Composition
 slug: composition
 type: plugin
 version: 0.1.0
-description: Flex Object based blogging
+description: Music compositions based Flex Objects
 icon: music
 author:
-  name: Sebastian Laube
-  email: hello@sebastianlaube.de
-homepage: https://github.com/bitstarr/grav-plugin-news
-keywords: grav, plugin, news, flex-objects, blog
-bugs: https://github.com/bitstarr/grav-plugin-news/issues
-docs: https://github.com/bitstarr/grav-plugin-news/blob/develop/README.md
+  name: Jorge Sepulveda
+  email: jorluiseptor@gmail.lcom
+homepage: https://github.com/jorluiseptor/grav-plugin-composition
+keywords: grav, plugin, composition, flex-objects, blog
+bugs: https://github.com/jorluiseptor/grav-plugin-composition/issues
+docs: https://github.com/jorluiseptor/grav-plugin-composition/README.md
 license: MIT
 
 dependencies:
@@ -32,56 +32,45 @@ form:
       validate:
         type: bool
 
-    built_in_css:
-      type: toggle
-      label: PLUGIN_NEWS.CONF.USE_BUILT_IN_CSS
-      highlight: 1
-      default: 1
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
-
     collection_page:
       type: pages
       # start_route: /
       show_modular: false
       limit_levels: 2
-      label: PLUGIN_NEWS.CONF.NEWS_PAGE_SLUG
+      label: Collection home page
       validate:
         required: true
 
-    news_per_page:
-      type: number
-      label: PLUGIN_NEWS.CONF.NEWS_PER_PAGE
-      validate:
-        required: true
-        type: number
+    # news_per_page:
+    #   type: number
+    #   label: PLUGIN_NEWS.CONF.NEWS_PER_PAGE
+    #   validate:
+    #     required: true
+    #     type: number
 
-    pagination_delta:
-      type: number
-      label: PLUGIN_NEWS.CONF.DELTA
-      help: PLUGIN_NEWS.CONF.DELTA_HELP
-      validate:
-        required: true
-        type: number
+    # pagination_delta:
+    #   type: number
+    #   label: PLUGIN_NEWS.CONF.DELTA
+    #   help: PLUGIN_NEWS.CONF.DELTA_HELP
+    #   validate:
+    #     required: true
+    #     type: number
 
 
-    feed.limit:
-      type: number
-      label: PLUGIN_NEWS.CONF.FEED_LIMIT
-      default: 10
-      validate:
-        required: true
-        type: number
+    # feed.limit:
+    #   type: number
+    #   label: PLUGIN_NEWS.CONF.FEED_LIMIT
+    #   default: 10
+    #   validate:
+    #     required: true
+    #     type: number
 
-    feed.title:
-      type: text
-      label: PLUGIN_NEWS.CONF.FEED_TITLE
-      validate:
-        required: true
+    # feed.title:
+    #   type: text
+    #   label: PLUGIN_NEWS.CONF.FEED_TITLE
+    #   validate:
+    #     required: true
 
-    feed.sescription:
-      type: text
-      label: PLUGIN_NEWS.CONF.FEED_DESCRIPTION
+    # feed.sescription:
+    #   type: text
+    #   label: PLUGIN_NEWS.CONF.FEED_DESCRIPTION

@@ -1,14 +1,14 @@
 {
-  "name": "bitstarr/news",
+  "name": "jorluiseptor/composition",
   "type": "grav-plugin",
   "description": "Flex Object based blogging",
   "keywords": ["plugin"],
-  "homepage": "https://github.com/bitstarr/grav-plugin-news",
+  "homepage": "https://github.com/jorluiseptor/grav-plugin-composition",
   "license": "MIT",
   "authors": [
     {
-      "name": "Sebastian Laube",
-      "email": "hello@sebastianlaube.de",
+      "name": "Jorge Sepulveda",
+      "email": "jorluiseptor@gmail.com",
       "role": "Developer"
     }
   ],

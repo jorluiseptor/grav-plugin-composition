@@ -1,5 +1,5 @@
 <?php
-namespace Grav\Plugin\News;
+namespace Grav\Plugin\Composition;
 
 use Grav\Common\Grav;
 use Grav\Common\Page\Collection;

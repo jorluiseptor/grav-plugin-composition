@@ -9,20 +9,20 @@ declare(strict_types=1);
  * @license    MIT License; see LICENSE file for details.
  */
 
-namespace Grav\Plugin\News\Flex\Types\News;
+namespace Grav\Plugin\Composition\Flex\Types\Composition;
 
-use Grav\Plugin\News\Utils;
+use Grav\Plugin\Composition\Utils;
 use Grav\Common\Flex\Types\Generic\GenericObject;
 use Grav\Common\File\CompiledYamlFile;
 use Grav\Common\Grav;
 
 /**
- * Class NewsObject
+ * Class CompositionObject
  * @package Grav\Common\Flex\Generic
  *
  * @extends FlexObject<string,GenericObject>
 */
-class NewsObject extends GenericObject
+class CompositionObject extends GenericObject
 {
     /**
      * {@inheritdoc}
@@ -126,7 +126,7 @@ class NewsObject extends GenericObject
 
     public function setDateIndex($date)
     {
-        $path = Grav::instance()['locator']->findResource('user-data://') . '/news-dates.yaml';
+        $path = Grav::instance()['locator']->findResource('user-data://') . '/Composition-dates.yaml';
         if (!file_exists($path))
         {
             touch($path);
@@ -151,7 +151,7 @@ class NewsObject extends GenericObject
 
     public function setTagIndex(array $tags)
     {
-        $path = Grav::instance()['locator']->findResource('user-data://') . '/news-tags.yaml';
+        $path = Grav::instance()['locator']->findResource('user-data://') . '/Composition-tags.yaml';
         if (!file_exists($path))
         {
             touch($path);

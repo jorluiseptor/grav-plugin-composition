@@ -5,7 +5,7 @@ use Composer\Autoload\ClassLoader;
 use Grav\Common\Plugin;
 use Grav\Events\FlexRegisterEvent;
 use Grav\Common\Uri;
-use Grav\Plugin\News\Utils;
+use Grav\Plugin\Composition\Utils;
 use Twig\TwigFunction;
 
 /**

@@ -79,7 +79,7 @@ config:
       method: 'jsonSerialize'
       formatter:
         class: 'Grav\Framework\File\Formatter\YamlFormatter'
-      filename: 'news'
+      filename: 'compositions'
 
   # Site Configuration
   site:
@@ -94,16 +94,16 @@ config:
           - 'flex/{TYPE}/object/{LAYOUT}{EXT}'
       defaults:
         # Default template {TYPE}; overridden by filename of this blueprint if template folder exists
-        type: 'news'
+        type: 'composition'
         # Default template {LAYOUT}; can be overridden in render calls (usually Twig in templates)
         layout: default
 
   # Data Configuration
   data:
     # Object class to be used, allowing custom methods for the object
-    object: 'Grav\Plugin\News\Flex\Types\News\NewsObject'
+    object: 'Grav\Plugin\Composition\Flex\Types\Composition\CompositionObject'
     # Collection class to be used, allowing custom methods for the collections
-    collection: 'Grav\Plugin\News\Flex\Types\News\NewsCollection'
+    collection: 'Grav\Plugin\Composition\Flex\Types\Composition\CompositionCollection'
     # Index class to be used, works as a quick database-like lookup index
     index: 'Grav\Common\Flex\Types\Generic\GenericIndex'
     storage:
@@ -114,7 +114,7 @@ config:
           # File formatter class, in this case the file is stored in markdown
           class: 'Grav\Framework\File\Formatter\JsonFormatter'
         # JSON file where all the objects will be stored
-        folder: user-data://flex-objects/news
+        folder: user-data://flex-objects/composition
     search:
       # Search options
       options:
@@ -200,7 +200,7 @@ form:
                   type: selectize
                   label: PLUGIN_NEWS.TAGS
                   selectize:
-                    data-options@: 'Grav\Plugin\News\Utils::getTags'
+                    data-options@: 'Grav\Plugin\Composition\Utils::getTags'
                   validate:
                     type: commalist
 

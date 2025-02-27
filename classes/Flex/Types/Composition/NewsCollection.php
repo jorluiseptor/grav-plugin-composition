@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @license    MIT License; see LICENSE file for details.
  */
 
-namespace Grav\Plugin\News\Flex\Types\News;
+namespace Grav\Plugin\Composition\Flex\Types\Composition;
 
 use DateTime;
 use Grav\Common\Grav;
@@ -18,15 +18,15 @@ use Doctrine\Common\Collections\Criteria;
 use Grav\Common\File\CompiledYamlFile;
 
 /**
- * Class NewsCollection
+ * Class CompositionCollection
  * @package Grav\Common\Flex\Generic
  *
  * @extends FlexCollection<string,GenericObject>
  */
-class NewsCollection extends GenericCollection
+class CompositionCollection extends GenericCollection
 {
     // custom filter to test for multiple values on the same key (if field is type string)
-    public function filterByArray( $key, $array ): NewsCollection
+    public function filterByArray( $key, $array ): CompositionCollection
     {
         $expr = Criteria::expr();
         $criteria = Criteria::create();
@@ -40,7 +40,7 @@ class NewsCollection extends GenericCollection
     }
 
     // custom filter for multiple values of the same key (if field is type array)
-    public function inArray($key, array $values): NewsCollection
+    public function inArray($key, array $values): CompositionCollection
     {
         $mappedCollection = $this->map(function($obj) use ($values, $key) {
             foreach ($values as $value) {
@@ -59,8 +59,8 @@ class NewsCollection extends GenericCollection
         return $this->createFrom(array_values($array_with_elements_remove));
     }
 
-    // custom filter to get news intended to be public
-    public function public(): NewsCollection
+    // custom filter to get Composition intended to be public
+    public function public(): CompositionCollection
     {
         $expr = Criteria::expr();
         $criteria = Criteria::create();
@@ -92,7 +92,7 @@ class NewsCollection extends GenericCollection
         return $this->matching( $criteria );
     }
 
-    public function archive( $date ): NewsCollection
+    public function archive( $date ): CompositionCollection
     {
         $expr = Criteria::expr();
         $criteria = Criteria::create();
@@ -121,7 +121,7 @@ class NewsCollection extends GenericCollection
     public function getArchiveIndex(): Array
     {
         // get from index file
-        $path = Grav::instance()['locator']->findResource( 'user-data://' ) . '/news-dates.yaml';
+        $path = Grav::instance()['locator']->findResource( 'user-data://' ) . '/Composition-dates.yaml';
         // if file does not exist, or is older than 24h
         if ( !file_exists( $path ) || time()-filemtime( $path ) > 24 * 3600 )
         {
@@ -151,7 +151,7 @@ class NewsCollection extends GenericCollection
     public function getTagsIndex(): Array
     {
         // get from index file
-        $path = Grav::instance()['locator']->findResource( 'user-data://' ) . '/news-tags.yaml';
+        $path = Grav::instance()['locator']->findResource( 'user-data://' ) . '/Composition-tags.yaml';
         // if file does not exist, or is older than 24h
         if ( !file_exists( $path ) || time()-filemtime( $path ) > 24 * 3600 )
         {
