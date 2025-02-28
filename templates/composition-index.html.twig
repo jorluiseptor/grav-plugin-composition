@@ -2,7 +2,7 @@
 
 
 {% set flex = grav.get('flex') %}
-{% set directory = flex.directory('news') %}
+{% set directory = flex.directory('composition') %}
 {% set collection = directory.getCollection() %}
 
 {# GENERIC SETTINGS #}
@@ -21,6 +21,7 @@
 {% endif %}
 
 {% set search = uri.param('search') %}
+{# {% set search = 'composition' %} #}
 {% if search %}
     {% set collection = collection.search(search) %}
     {% set page_title = 'PLUGIN_NEWS.SEARCH_FOR'|t( search ) %}

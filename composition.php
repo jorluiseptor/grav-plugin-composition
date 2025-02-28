@@ -75,10 +75,11 @@ class CompositionPlugin extends Plugin
     public function onRegisterFlex($event): void
     {
         $flex = $event->flex;
+        $collection_name = $this->getCollectionName();
 
         $flex->addDirectoryType(
-            'composition',
-            'blueprints://flex-objects/composition.yaml'
+            $collection_name,
+            'blueprints://flex-objects/' . $collection_name .'.yaml'
         );
 
     }
@@ -114,8 +115,9 @@ class CompositionPlugin extends Plugin
     public function onFlexAfterSave($event)
     {
         $obj = $event['object'];
+        $collection_name = $this->getCollectionName();
         // only handle our type
-        if( $obj->getType() !== 'news') {
+        if( $obj->getType() !== $collection_name) {
             return;
         }
 
@@ -151,7 +153,8 @@ class CompositionPlugin extends Plugin
         {
             // check if this post is public
             $now = new \DateTime;
-            $object = $this->grav['flex']->getObject( $path, 'news' );
+            $collection_name = $this->getCollectionName();
+            $object = $this->grav['flex']->getObject( $path, $collection_name );
             if (
                 // exists and is published at least
                 !$object || $object['published'] !== true ||
@@ -207,7 +210,7 @@ class CompositionPlugin extends Plugin
 
     private function simpleRouting(string $route)
     {
-        $config = $this->config->get('plugins.news');
+        $config = $this->config->get('plugins.composition');
 
         $normalized = trim($route, '/');
         if (!$normalized) {
@@ -218,10 +221,10 @@ class CompositionPlugin extends Plugin
         $key = array_shift($parts);
         $path = array_shift($parts);
 
-        if ( $path && '/' . $key == $config['news_page'] )
+        if ( $path && '/' . $key == $config['collection_page'] )
         {
             $pages = $this->grav['pages'];
-            $blog = $pages->find( $config['news_page'] );
+            $blog = $pages->find( $config['collection_page'] );
             // dd( $blog );
             // dd( $this->config->get('plugins.news') );
             // $this->addPage($route, $path, $config['news_page'] . '/' . $config['article_page']);
@@ -239,5 +242,19 @@ class CompositionPlugin extends Plugin
                 break;
         }
         */
+    }
+
+    /**
+     * Returns the collection name as defined in the plugin configuration formatted as lowercase
+     * @return string
+     *  
+     */
+    private function getCollectionName(): string
+    {
+        # TODO change this plugin name to something more generic
+        $config = $this->config->get('plugins.composition');
+        $collection_name = $config['collection_name'];
+        $collection_name_lower = strtolower($collection_name);
+        return $collection_name_lower;
     }
 }

@@ -32,12 +32,21 @@ form:
       validate:
         type: bool
 
+    collection_name:
+      type: text
+      label: Collection name
+      help: 'What is the name of the collection? Example: composition, song, etc.'
+      validate:
+        required: true
+        lowercase: true
+
     collection_page:
       type: pages
       # start_route: /
       show_modular: false
       limit_levels: 2
       label: Collection home page
+      help: 'What page will contain all items in this collection? Example: /compositions'
       validate:
         required: true
 
